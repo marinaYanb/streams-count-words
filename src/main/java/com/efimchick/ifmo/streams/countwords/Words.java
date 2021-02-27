@@ -14,9 +14,8 @@ public class Words {
                 .filter(word -> word.length() >= 4)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream().filter(i -> i.getValue() >= 10)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
-                .entrySet().stream()
-                .sorted(Map.Entry.comparingByKey()).sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
